@@ -14,6 +14,9 @@
         <li class="nav-item">
           <a class="nav-link" href="/allPosts">All Posts</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/user/index">All Users</a>
+        </li>
         {{-- <li class="nav-item">
           <a class="nav-link" href="#">Pricing</a>
         </li>

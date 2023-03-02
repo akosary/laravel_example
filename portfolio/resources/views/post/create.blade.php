@@ -18,8 +18,8 @@
                         <input type="text" class="form-control" id="inputEmail4" placeholder="Title" name="title">
                       </div>
                       <div class="form-group col-md-6">
-                        <label for="inputPostedBy">Posted By</label>
-                        <input type="text" class="form-control" id="inputPostedBy" placeholder="Posted By" name="posted_by">
+                        {{-- <label for="inputPostedBy">Posted By</label> --}}
+                        <input hidden type="text" class="form-control" id="inputPostedBy" placeholder="Posted By" value="{{Auth::user()->name}}" name="posted_by">
                       </div>
                     <button type="submit" class="btn btn-primary mt-3">Submit</button>
                   </form>

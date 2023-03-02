@@ -32,7 +32,7 @@
                                     <input type="text" value="{{ $Post->Id }}" name="Id" hidden>
                                     <td><input type="text" value="{{ $Post->title }}" name="title" id=""></td>
                                     <td><input type="text" value="{{ $Post->posted_by }}" name="posted_by" id=""></td>
-                                    <td><input type="datetime" value="{{ $Post->created_at }}" name="created_at" id=""></td>
+                                    <td><input type="datetime" value="{{ $Post->created_at }}" name="created_at" id="" disabled></td>
                                     <td>
                                         <button class="btn btn-dark btn-sm" onclick="location.href='/allPosts'">retern</button>
                                         <button type="submit" class="btn btn-primary btn-sm" >Submit</button>

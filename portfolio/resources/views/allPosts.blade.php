@@ -49,6 +49,9 @@
                       </tr> --}}
                     </tbody>
                   </table>
+                  <div class="text-center justify-center">
+                    {{$Posts->links()}}
+                  </div>
             </div>
         </div>
     </div>

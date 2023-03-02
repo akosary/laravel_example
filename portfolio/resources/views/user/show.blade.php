@@ -24,14 +24,14 @@
                       </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach($Post as $data) --}}
+                        @foreach($posts->posts as $Post)
                             <tr>
                                 <th scope="row">{{ $Post->Id }}</th>
                                 <td>{{ $Post->title }}</td>
                                 <td>{{ $Post->posted_by }}</td>
                                 <td>{{ $Post->created_at }}</td>
                                 <td>
-                                    <button class="btn btn-primary btn-sm" onclick="location.href='/allPosts'">retern</button>
+                                    {{-- <button class="btn btn-primary btn-sm" onclick="location.href='/allPosts'">retern</button>
                                     <form action="{{ route('post.update', $Post->Id) }}" style="display: inline-block;">
                                         <button type="submit" class="btn btn-primary btn-sm">Edit</button>
                                     </form>
@@ -39,11 +39,11 @@
                                         @method('DELETE')
                                         @csrf()
                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
+                                    </form> --}}
                                 </td>
 
                             </tr>
-                        {{-- @endforeach --}}
+                        @endforeach
                     </tbody>
                   </table>
             </div>

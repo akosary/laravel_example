@@ -10,6 +10,6 @@ class Post extends Model
     use HasFactory;
     protected $guarded = [];
     public $timestamps = false;
-
+    protected $perPage = 5;
     // protected $table = 'posts';
 }

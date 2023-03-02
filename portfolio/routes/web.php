@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\FacebookController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,15 +20,33 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/', function ()
-{
-    return view('home');
-});
-Route::get('/allPosts', [PostController::class, 'getAllPosts'])->name('post.index');
+// Route::get('/', function ()
+// {
+//     return view('home');
+// });
+
+// post routes
+Route::get('/allPosts', [PostController::class, 'getAllPosts'])->name('post.index')->middleware('auth');
 Route::get('/postDetails/{id}', [PostController::class, 'getPostById']);
+
+Route::delete('/post/delete/{id}',[PostController::class, 'destroy'])->name('post.destroy');
+
 Route::get('/post/create',[PostController::class, 'create'])->name('post.create');
 Route::post('/post/store',[PostController::class, 'store'])->name('post.store');
 
 Route::get('/post/update/{post}',[PostController::class, 'update'])->name('post.update');
 Route::put('/post/edit/{id}',[PostController::class, 'edit'])->name('product.edit');
-Route::delete('/post/delete/{post}',[PostController::class, 'destroy'])->name('post.destroy');
+
+// user routes
+Route::get('/user/index',[UserController::class, 'index'])->name('user.index');
+Route::get('/user/show/{id}',[UserController::class, 'show'])->name('user.show');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// Third party login
+Route::controller(FacebookController::class)->group(function(){
+    Route::get('/auth/facebook', 'redirectToFacebook')->name('auth.facebook');
+    Route::get('/auth/facebook/callback', 'handleFacebookCallback');
+});

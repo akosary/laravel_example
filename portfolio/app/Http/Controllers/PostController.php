@@ -9,7 +9,7 @@ use App\Models\Post;
 class PostController extends Controller
 {
     function getAllPosts(){
-        $Posts = Post::get();
+        $Posts = Post::paginate();
         return view('allPosts' ,['Posts' => $Posts]);
         // dd($Posts);
     }
@@ -22,7 +22,8 @@ class PostController extends Controller
 
     function create()
     {
-        return view('post.create');
+        // $userName=Auth::user()->name;
+        return view('post.create' );
     }
 
     function store(Request $request)
@@ -36,17 +37,13 @@ class PostController extends Controller
     }
     function edit($id,Request $request)
     {
-        // dd($request);
-        $post = Post::find($id);
-        // dd($request);
-        $post->update($request->except(['_token','_method','Id']));
-
-        // $post->update($request->all());
+        $post=Post::where('Id',$id);
+        $post->update($request->except(['_token','_method']));
         return redirect()->route('post.index');
     }
-    function destroy(Post $post)
+    function destroy($id)
     {
-        $post->delete();
+        Post::where('Id',$id)->delete();
         return redirect()->route('post.index');
     }
 
